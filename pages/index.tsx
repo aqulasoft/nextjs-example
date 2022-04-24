@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import RedButton from "../src/components/RedButton";
 import CheckBox from "../src/components/CheckBox";
 import ButtonColumn from "../src/components/ButtonColumn";
+import LoginForm from "../src/components/LoginForm";
 
 const RedDiv = styled.div`
   color: red;
@@ -65,7 +66,7 @@ const Home: NextPage = () => {
 
             <div>10</div>
           </div> */}
-{/* 
+          {/* 
           <RedButton />
           <RedButton title="Button 1" />
           <RedButton title="Button 2" />
@@ -78,6 +79,10 @@ const Home: NextPage = () => {
       </div>
 
       <ButtonColumn />
+
+      <h1>Form</h1>
+
+      <LoginForm />
     </div>
   );
 };
