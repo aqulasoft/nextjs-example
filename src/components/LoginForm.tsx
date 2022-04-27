@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { signup } from "../api/authApi";
+import { getUserById } from "../api/mainApi";
+import { useStore } from "../stores/storeContext";
+import { saveSession } from "../utils/authKeyStorageService";
 import Input from "./Input";
 
 type LoginInfo = {
@@ -8,6 +12,8 @@ type LoginInfo = {
 
 const LoginForm = () => {
   const [loginData, setLoginData] = useState<LoginInfo>({});
+
+  const { userStore } = useStore();
 
   return (
     <div>
@@ -25,7 +31,9 @@ const LoginForm = () => {
       />
       <button
         onClick={() => {
-          console.log(loginData);
+          if (loginData.pass && loginData.name) {
+            userStore.signup(loginData.name, loginData.pass);
+          }
         }}
       >
         Login

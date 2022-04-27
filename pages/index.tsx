@@ -4,6 +4,8 @@ import RedButton from "../src/components/RedButton";
 import CheckBox from "../src/components/CheckBox";
 import ButtonColumn from "../src/components/ButtonColumn";
 import LoginForm from "../src/components/LoginForm";
+import { useStore } from "../src/stores/storeContext";
+import AccountButton from "../src/components/AccountButton";
 
 const RedDiv = styled.div`
   color: red;
@@ -37,6 +39,7 @@ const GreenButton = styled(RedButton)`
 const Home: NextPage = () => {
   return (
     <div>
+      <AccountButton />
       {/* <div>
         <div>1</div>
         <div>1</div>
@@ -78,7 +81,7 @@ const Home: NextPage = () => {
         </Container>
       </div>
 
-      <ButtonColumn />
+      {/* <ButtonColumn /> */}
 
       <h1>Form</h1>
 
