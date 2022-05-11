@@ -27,7 +27,7 @@ export const UserStore = types
       getAccountInfo().then(({ data: user }) => {
         self.user = User.create(user);
         self.isLoading = false;
-      });
+      }).catch(()=>{});
     },
     signup: (name: string, pass: string) => {
         self.isLoading = true;
