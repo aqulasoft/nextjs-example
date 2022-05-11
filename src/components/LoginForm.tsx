@@ -1,14 +1,23 @@
+import styled from "@emotion/styled";
+import { Button, TextField } from "@mui/material";
 import React, { useState } from "react";
-import { signup } from "../api/authApi";
-import { getUserById } from "../api/mainApi";
 import { useStore } from "../stores/storeContext";
-import { saveSession } from "../utils/authKeyStorageService";
-import Input from "./Input";
 
 type LoginInfo = {
   name?: string;
   pass?: string;
 };
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  & > * {
+    margin-bottom: 10px;
+  }
+`;
+
+const SubmitButton = styled(Button)``;
 
 const LoginForm = () => {
   const [loginData, setLoginData] = useState<LoginInfo>({});
@@ -16,20 +25,24 @@ const LoginForm = () => {
   const { userStore } = useStore();
 
   return (
-    <div>
-      <h4>login</h4>
-      <Input
-        onChange={(value) => {
-          setLoginData({ name: value, pass: loginData.pass });
+    <Container>
+      <TextField
+        label="login"
+        variant="filled"
+        onChange={(e) => {
+          setLoginData({ name: e.target.value, pass: loginData.pass });
         }}
       />
-      <h4>pass</h4>
-      <Input
-        onChange={(value) => {
-          setLoginData({ name: loginData.name, pass: value });
+
+      <TextField
+        label="password"
+        variant="filled"
+        onChange={(e) => {
+          setLoginData({ name: loginData.name, pass: e.target.value });
         }}
       />
-      <button
+      <SubmitButton
+        variant="contained"
         onClick={() => {
           if (loginData.pass && loginData.name) {
             userStore.signup(loginData.name, loginData.pass);
@@ -37,8 +50,8 @@ const LoginForm = () => {
         }}
       >
         Login
-      </button>
-    </div>
+      </SubmitButton>
+    </Container>
   );
 };
 
