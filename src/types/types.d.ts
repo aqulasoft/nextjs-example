@@ -5,3 +5,10 @@ export type User = {
   email: string;
   password?: string;
 };
+
+export type Lot = {
+  name: string;
+  price: number;
+  step: number;
+  image: string;
+};
